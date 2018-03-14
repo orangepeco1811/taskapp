@@ -59,3 +59,6 @@ gem 'will_paginate', '= 3.1.6'
 #will_paginateをbootstrap風にする
 gem 'will_paginate-bootstrap'
 
+group :production do
+  gem 'pg', '0.21.0'
+end
