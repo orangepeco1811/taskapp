@@ -84,6 +84,8 @@ end
   def kanryo
  
     #idでTasksテーブルを取得
+   
+    #idでTasksテーブルを取得
     @task = Task.find(params[:id])
  
     #kanryoにtrueをセット
@@ -96,7 +98,23 @@ end
     redirect_to request.referer
  
   end
-  
+  def mikan
+ 
+    #idでTasksテーブルを取得
+   
+    #idでTasksテーブルを取得
+    @task = Task.find(params[:id])
+ 
+    #kanryoにtrueをセット
+    @task.kanryo = false
+ 
+    #更新処理（update文発行）
+    @task.save
+ 
+    #呼び出し元URLへリダイレクト
+    redirect_to request.referer
+ 
+  end
 
   # Strong Parameter
  def task_params

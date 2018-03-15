@@ -3,7 +3,7 @@ module TasksHelper
   def kanryo_tag(task)
     result = ""
     if task.kanryo == true
-         result = '完了'
+         result = '<a class="btn btn-sm btn-success" href="' + mikan_task_path(task) + '">完了</a>'
     else
       result = '<a class="btn btn-sm btn-primary" href="' + kanryo_task_path(task) + '">未完</a>'
     end
