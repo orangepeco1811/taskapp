@@ -1,7 +1,11 @@
 class Task < ApplicationRecord
+
+   belongs_to :user
+validates :user_id, presence: true
+  
+  
   attr_accessor :kigen_str
-
-
+  
   scope :by_kanryo, ->(kanryo){
     if kanryo.present?
       kanryo_bool = true

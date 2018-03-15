@@ -1,17 +1,21 @@
 class UsersController < ApplicationController
-   before_action :require_user_logged_in, only: [:index, :show]
-  def index
-     @users = User.all.page(params[:page])
-  end
+ before_action :require_user_logged_in, only: [:index, :show]
 
+  def index
+    @users = User.all.page(params[:page])
+  end
+  
   def show
+    @user =User.find(params[:id])
+    @tasks = @user.tasks.order('created_at DESC').page(params[:page])
+    counts(@user)
   end
 
   def new
     @user = User.new
   end
-
-   def create
+  
+  def create
     @user = User.new(user_params)
 
     if @user.save
@@ -21,7 +25,7 @@ class UsersController < ApplicationController
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
     end
-   end
+  end
 
   private
 
